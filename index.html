@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive card details form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&family=Space+Grotesk:wght@500&display=swap');
+     body{
+      margin: 0;
+     }
+    * {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+    
+    }
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+    .container {
+      display: grid;
+      grid-template-columns: 0.6fr 1fr;
+      height: 100vh;
+      width: 100%;
+    }
+    .purple-gradient {
+      background-image: url("images/bg-main-desktop.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      transition: ease all .5s;
+    }
+    
+    .inner-section {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-evenly;
+      transition: ease all .5s;
+    }
+    .inputs {
+      padding: 12px;
+      border: none;
+      margin-bottom: 25px;
+      border-radius: 10px;
+    }
+    #cardholderinput, #card_number {
+      padding-right: 153px;
+    }
+  #MM, #YY  {
+max-width: 50px;
+margin-right: 20px;
+  }
+  #cvc{
+    max-width: 176px;
+  }
+  .confirm {
+    background-color: hsl(278, 68%, 11%);
+    color: white;
+    padding: 10px 160px 10px 160px;
+    border-radius: 10px;
+  }
+  label {
+ font-size: 15px;
+ font-weight: 600;
+  }
+.front-card {
+  position: relative;
+}
+#log-svg {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 1;
+}
+#main-card {
+  z-index: -1;
+}
+.card {
+  position: relative;
+  transform: translateX(4in) translateY(2.5in);
+}
+.card2{
+  position: relative;
+  top: 490px;
+  left: 750px;
+  transform: translateX(-3in) translateY(-2.5in);
+}
+.card_details {
+color: white;
+position: absolute;
+top: 140px;
+left: 30px;
+width: 100%;
+}
+#credit_numbers {
+  font-size: 27px;
+  letter-spacing: 5px;
+  font-weight: 200;
+  position: relative;
+  bottom: 10px;
+  right: 5px;;
+}
+#credit_name {
+  text-transform: uppercase;
+  font-weight: 100;
+  letter-spacing: 2px;
+  margin-right: 200px;
+ position: relative;
+ top: 20px; 
+}
+#credit_exp {
+  font-weight: 100;
+  letter-spacing: 2px;
+  position: relative;
+  top: 20px;
+  right: 10px;
+}
+#credit_csv {
+  position: absolute;
+font-size: 14px;
+color: white;
+transform: translateY(1.2in) translateX(-0.8in);
+z-index: 1;
+
+}
+.hidden {
+  display: none;
+}
+.completestate {
+    visibility: hidden;
+    transform: translateY(-4in);
+    position: absolute;
+   }
+ h1 {
+  font-size: 30px;
+  text-transform: uppercase;
+  color: hsl(278, 68%, 11%);
+  font-weight: 100;
+  text-align: center;
+}
+ p {
+  color:hsl(279, 6%, 55%);
+  text-align: center;
+}
+.gradient {
+  background-image: linear-gradient(hsl(249, 99%, 64%), hsl(278, 94%, 30%));
+  border-radius: 75%;
+  background-repeat: no-repeat;
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  transform: translateX(1.67in) translateY(-0.22in);
+}
+.attribution {
+  position: absolute;
+}
+.check{
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 24px;
+  position: relative;
+  transform: translateX(2in) rotate(45deg);
+
+
+  width: 10px;
+  border-bottom: 4px solid hsl(279, 6%, 55%);
+  border-right: 4px solid hsl(279, 6%, 55%);
+}
+.error {
+  color: #af4242;
+  background-color: #fde8ec;
+ margin:0;
+ font-size: 12px;
+  display: none;
+}
+.error.display-error{
+	display:inherit;
+  position: absolute;
+  transform: translateY(-20px);
+  width: 25%;
+text-align: left;
+	
+}
+@media all and (max-width:375px){
+  .container{
+    display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 300px 400px;
+      position: relative;
+      right: 40px;
+      bottom: 50px;
+      
+      height: 100vh;
+      }
+      .purple-gradient{
+        width: 100vh;
+      }
+    .card {
+      position: absolute;
+   
+      transform: translateX(0.65in) scale(0.6) translateY(2.2in);
+      z-index: 1;
+    }
+    .card2{
+      position: absolute;
+   
+      transform: translateX(-6.6in) scale(0.6) translateY(-8in);
+    }
+    form {
+      transform: scale(0.8);
+      width:100%;
+    }
+   #credit_csv {
+    transform: translateY(1.15in) translateX(-0.8in);
+    transition: all ease .5s;
+   }
+   .attribution {
+    transform: translateX(1in) translateY(-0.75in);
+   }
+   .confirm {
+    transform: scaleX(1.1) scaleY(1.3);
+   }
+   .error.display-error{
+	display:inherit;
+  position: absolute;
+  transform: translateY(-20px);
+  width: 25%;
+text-align: left;
+	
+}
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+  <section class="purple-gradient"> 
+    <div class="card">
+
+      <div id="front-card">
+        <div class="card_details">
+          <label id="credit_numbers">
+            0000 0000 0000 0000
+        
+          </label><br>
+          <label id="credit_name">
+          Jane Appleseed
+        </label>
+        <label id="credit_exp">
+        
+          00/00
+        </label>
+        
+        
+        </div>
+        <img id="main-card"src="/interactive-card-details-form-main/images/bg-card-front.png">
+        <img id="log-svg"src="/interactive-card-details-form-main/images/card-logo.svg">
+      </div>
+    </div>
+<div class="card2">
+  <img src="/interactive-card-details-form-main/images/bg-card-back.png">
+  <label id="credit_csv">000</label>
+
+</div>
+   
+
+  </section>
+    <section class="inner-section">
+
+      
+      
+        <div class="form-wrapper">
+          <div class="completestate">
+            <div class="gradient">
+              
+            </div>
+            <div class="check"></div>
+            <h1>Thank you!</h1>
+
+            <p>We've added your card details
+            </p>
+            
+          </div>
+          <form name="credit-form" class="form"  method="GET">
+          <div id="display" class="hidden">
+            
+            <label for="cardholderinput">CARDHOLDER NAME</label><br>
+            <input class="inputs" id="cardholderinput" type="text" name="card_holder" placeholder="e.g. Jane Appleseed"/><br>
+            
+            
+            <label for="card_number">CARD NUMBER</label><br>
+            <input  autocomplete="off" class="inputs" id="card_number" type="text" name="card_number" placeholder="e.g. 1234 5678 9123 0000" required size="20" minlength="20" maxlength="20" /><br>
+            <p class="error card-error"></p>
+            <label for="MM YY">EXP. DATE (MM/YY)</label> &nbsp; <label for="cvc">CVC</label><br>
+           
+            <input id="MM" class="inputs" type="text" name="MM" placeholder="MM" size="2" maxlength="2" min="01" required/>
+            <p class="error MM-error"></p>
+            <input  id="YY" class="inputs" type="text" name="YY" placeholder="YY" size="2" maxlength="2" min="01" required/>
+            <p class="error YY-error"></p>
+            
+            
+           
+            <input  id="cvc" class="inputs"type="text" name="CVC" placeholder="e.g. 123" size="3" maxlength="3" required/><br>
+            <p class="error cvc-error"></p>
+          </div>
+            
+            
+            <button class="confirm" type="submit"> Confirm </button>
+            
+          </form>
+        </div>
+      </div>
+    
+    </section>
+ 
+</div>
+  <!-- Completed state start -->
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://www.linkedin.com/in/devyn-jones-69675322b/">Devyn Jones</a>.
+  </div>
+  <script async>
+    // target the input field by ID and assign keyup event
+    // Form Data
+    let myForm = document.forms['credit-form']
+    let cardNumber = document.getElementById('card_number');
+    let MM = document.getElementById('MM');
+    let YY = document.getElementById('YY');
+    let body = document.body
+    let cvc = document.getElementById('cvc');
+    let cardholder = document.getElementById('cardholderinput')
+    // Card Image values
+    let creditExp = document.getElementById('credit_exp');
+    let creditCard = document.getElementById('credit_numbers');
+    let creditCsv = document.getElementById('credit_csv');
+    let creditName = document.getElementById('credit_name')
+    //Hidden Class
+    let hidden = document.querySelector('#display')
+    let complete = document.querySelector('.completestate')
+    // Button
+    let confirmBtn = document.querySelector('.confirm')
+
+    function containsAnyLetter(str) {
+  return /[a-zA-Z]/.test(str);
+}
+    console.log(hidden.classList)
+    if(hidden.classList = 'hidden') {
+      hidden.classList.toggle("hidden")
+      
+    }
+
+    function showError(errorElement, errorMessage){
+      document.querySelector('.'+errorElement).classList.add("display-error");
+      document.querySelector('.'+errorElement).innerHTML = errorMessage;
+    }
+    function clearError(){
+      let errors=document.querySelectorAll(".error")
+      for(let error of errors) {
+        error.classList.remove("display-error");
+      }
+    }
+    cardNumber.addEventListener('keyup', function(e){
+      console.log(this.value)
+      let val = this.value
+      let newVal = ''
+      val = val.replace(/\s/g, '')
+      for (let i = 0; i < val.length;i++){
+        if(i%4 == 0 && i > 0) newVal = newVal.concat(' ');
+        // concatenate the new value
+        newVal = newVal.concat(val[i]);
+      }
+      this.value = newVal;
+      creditCard.innerHTML = cardNumber.value;
+     if(cardNumber.value == ''){
+      showError("card-error", 'Cant Be blank');
+      return false;
+     }
+     if(containsAnyLetter(cardNumber.value) == true){
+      showError("card-error", 'Numbers only');
+      return false;
+     }
+    })
+  //  let newArray = [[document.querySelector('#MM').value, document.querySelector('#YY').value]]
+    body.addEventListener('keyup', function(e){
+      if (e.target !== MM && e.target !== YY) {
+        return
+      }
+
+      
+      if(e.target.size == MM.size && e.target.size == YY.size) {
+        
+       let newVal = MM.value + YY.value
+        console.log(newVal)
+       
+        newExp = newVal[0] + newVal[1] + '/' + newVal[2] + newVal[3];
+        
+        if(newVal.length == 4) creditExp.innerHTML = newExp;
+        
+        
+      }
+      if(MM.value == ''){
+        showError("MM-error", "Can't be Blank");
+        return false;
+      }
+  
+      if(containsAnyLetter(MM.value) == true){
+      showError("MM-error", 'Numbers only');
+      return false;
+     }
+    
+      console.log(newExp)
+    })
+   
+    cvc.addEventListener('keyup', function(e){
+      console.log(e.target.size)
+      if(e.target.size == 3) creditCsv.innerHTML = e.target.value
+      if(cvc.value == '') {
+        showError("cvc-error", "Can't be Blank");
+        return false;
+      }
+      if(containsAnyLetter(cvc.value) == true){
+        showError("cvc-error", "Numbers only");
+        return false;
+      }
+    })
+     cardholder.addEventListener('keyup', function(e){
+      creditName.innerHTML = e.target.value
+     })
+   
+   myForm.onsubmit = function(event){
+    event.preventDefault();
+   }
+   let clicks = 1
+    confirmBtn.addEventListener('click', function(e) {
+      
+   clicks++;
+   console.log(clicks % 2)
+      if (clicks %2 == 0) {
+        confirmBtn.innerHTML = 'Continue'
+         
+      } else {
+        confirmBtn.innerHTML = 'Confirm'
+      }
+
+    hidden.classList.toggle("hidden")
+      complete.classList.toggle('completestate')
+      
+     if (confirmBtn.innerHTML = 'Continue'){
+      form.reset();
+      creditCard.innerHTML = '0000 0000 0000 0000'
+      creditName.innerHTML = 'JANE APPLESEED'
+      creditCsv.innerHTML= '000'
+      creditExp.innerHTML= '00/00'
+     } 
+     
+    });
+  </script>
+</body>
+</html>
